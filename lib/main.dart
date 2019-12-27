@@ -5,9 +5,6 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
 
-import 'package:http/http.dart' as http;
-import 'package:html/parser.dart' as parser;
-import 'package:html/dom.dart' as dom;
 import 'package:webview_flutter/webview_flutter.dart';
 
 void main() => runApp(MyApp());
@@ -84,7 +81,8 @@ class SecondRoute extends StatelessWidget {
   Widget build(BuildContext context) {
     final title = ModalRoute.of(context).settings.arguments;
     final url = 'https://www.namecheap.com/domains/registration/results.aspx?domain=${title.toString()}';
-
+     bool isLoading=true;
+     
     return Scaffold(
       appBar: AppBar(
         title: Text(title.toString()),
@@ -96,10 +94,19 @@ class SecondRoute extends StatelessWidget {
           },
           child:  WebView(
           initialUrl: url,
-          javascriptMode: JavascriptMode.unrestricted
+          javascriptMode: JavascriptMode.unrestricted,
+          onPageFinished: (_) {
+                isLoading = false;
+
+            } 
           ),
+          
         ),
+        
       ),
     );
   }
+
+
+  
 }
