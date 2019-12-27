@@ -1,4 +1,4 @@
-# Business name generator, Startup name generator, domain name checker flutter application
+# Business name generator, startup name generator, domain name checker flutter application
 
 A new Flutter project.
 
